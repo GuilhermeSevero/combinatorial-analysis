@@ -32,21 +32,21 @@ export class CombinatorialAnalysis {
       return [];
     }
 
-    const invoice = innerRemaining[0];
-    const invoiceValue = invoice.value;
+    const item = innerRemaining[0];
+    const itemValue = item.value;
 
-    const includeNote = this.findCombination(
-      [...current, invoice],
+    const includeItem = this.findCombination(
+      [...current, item],
       innerRemaining.slice(1),
-      +(remainingValue - invoiceValue).toFixed(2),
+      +(remainingValue - itemValue).toFixed(2),
     );
 
-    const excludeNote = this.findCombination(
+    const excludeItem = this.findCombination(
       current,
       innerRemaining.slice(1),
       remainingValue,
     );
 
-    return [...includeNote, ...excludeNote];
+    return [...includeItem, ...excludeItem];
   }
 }
